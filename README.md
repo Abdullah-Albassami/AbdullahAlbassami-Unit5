@@ -10,8 +10,15 @@ The project demonstrates models, migrations, CRUD operations, QuerySets, relatio
 AbdullahAlbassami-Unit5/
 ├── ERD/
 │   └── stockroom_erd.png
-├── requirements.txt
+├── screenshots/
+│   ├── CRUD.png
+│   ├── QuerySets.png
+│   ├── Relationships.png
+│   ├── Aggregation_Annotation.png
+│   ├── Constraints.png
+│   └── Migrations.png
 ├── README.md
+├── requirements.txt
 └── stockroom_project/
     ├── manage.py
     ├── inventory/
@@ -111,7 +118,7 @@ The project demonstrates:
 - Ordering by category and product name
 - Returning the five most recent orders
 - Searching with `Q` objects
-- Updating values with `F` expressions
+- Using `F` expressions for database-side comparisons
 
 ## Relationship Traversal
 
@@ -239,9 +246,68 @@ Order 4: 95
 Order 5: 320
 ```
 
+## Evidence Screenshots
+
+The following screenshots demonstrate the required ORM operations and their returned results.
+
+### CRUD Operations
+
+![CRUD Operations](screenshots/CRUD.png)
+
+### QuerySet Operations
+
+![QuerySet Operations](screenshots/QuerySets.png)
+
+### Relationship Traversal
+
+![Relationship Traversal](screenshots/Relationships.png)
+
+### Annotation and Aggregation
+
+![Annotation and Aggregation](screenshots/Aggregation_Annotation.png)
+
+### Constraints
+
+![Constraints](screenshots/Constraints.png)
+
+The screenshot demonstrates that the database-level check constraint rejects an invalid product with a negative price.
+
+### Migrations
+
+![Migrations](screenshots/Migrations.png)
+
+The screenshot shows both inventory migrations applied successfully:
+
+```text
+0001_initial
+0002_product_is_active
+```
+
+It also confirms that there are no pending migration operations.
+
+## ERD
+
+The project ERD is located at:
+
+```text
+ERD/stockroom_erd.png
+```
+
+![StockRoom ERD](ERD/stockroom_erd.png)
+
+The ERD shows:
+
+- Primary keys
+- Foreign keys
+- Cardinality
+- Optionality
+- The unique relationship constraint between `Order` and `Product` through `OrderItem`
+
 ## Setup
 
 ### 1. Create a virtual environment
+
+From inside the Django project directory:
 
 ```bash
 python3 -m venv venv
@@ -249,6 +315,8 @@ source venv/bin/activate
 ```
 
 ### 2. Install dependencies
+
+From the repository root:
 
 ```bash
 pip install -r requirements.txt
@@ -277,16 +345,6 @@ python manage.py check
 ```bash
 python manage.py runserver
 ```
-
-## ERD
-
-The project ERD is located at:
-
-```text
-ERD/stockroom_erd.png
-```
-
-It shows the primary keys, foreign keys, cardinality, optionality, and the unique relationship constraint between `Order` and `Product` through `OrderItem`.
 
 ## Known Limitations
 
